@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guns of Boom - Unleash the Chaos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Impact', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        body {
+            background: #0d0d0d;
+            color: #fff;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section with Static Background */
+        .hero {
+            position: relative;
+            height: 100vh;
+            background: url('https://via.placeholder.com/1920x1080?text=Guns+of+Boom+Battlefield') no-repeat center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(255, 69, 0, 0.4));
+            z-index: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+        }
+
+        .hero-logo {
+            max-width: 600px;
+            width: 100%;
+            height: auto;
+            filter: drop-shadow(0 0 20px #ff4500);
+            animation: glow 2s infinite alternate;
+        }
+
+        .hero p {
+            font-size: 1.8rem;
+            margin: 20px 0;
+            color: #ffeb3b;
+            text-shadow: 0 0 10px #ffeb3b;
+        }
+
+        /* Enhanced Download Buttons */
+        .download-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .btn {
+            padding: 20px 50px;
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #fff;
+            border: 3px solid #ff4500;
+            border-radius: 50px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            box-shadow: 0 0 15px rgba(255, 69, 0, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 69, 0, 0.7);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+            z-index: -1;
+        }
+
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-android {
+            background: linear-gradient(45deg, #32cd32, #1a1a1a);
+            border-color: #32cd32;
+            box-shadow: 0 0 15px rgba(50, 205, 50, 0.5);
+        }
+
+        .btn-android::before {
+            background: rgba(50, 205, 50, 0.7);
+        }
+
+        .btn-ios {
+            background: linear-gradient(45deg, #1e90ff, #1a1a1a);
+            border-color: #1e90ff;
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
+        }
+
+        .btn-ios::before {
+            background: rgba(30, 144, 255, 0.7);
+        }
+
+        .btn:hover {
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.8);
+            color: #fff;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Parallax Section */
+        .parallax {
+            background: url('https://via.placeholder.com/1920x1080?text=Battlefield+Chaos') no-repeat center fixed;
+            background-size: cover;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .parallax::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .parallax-content {
+            z-index: 1;
+        }
+
+        .parallax h2 {
+            font-size: 4rem;
+            color: #ff4500;
+            text-shadow: 0 0 15px #ff4500;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 20px;
+            background: #1a1a1a;
+            text-align: center;
+        }
+
+        .features h2 {
+            font-size: 3rem;
+            color: #ffeb3b;
+            margin-bottom: 60px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: #222;
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.4s;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: #ff4500;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            background: #333;
+        }
+
+        .feature-card h3 {
+            font-size: 2rem;
+            color: #ffeb3b;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            font-size: 1.1rem;
+            color: #ccc;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 40px;
+            background: #111;
+            text-align: center;
+            font-size: 1rem;
+            color: #888;
+            border-top: 3px solid #ff4500;
+        }
+
+        /* Animations */
+        @keyframes glow {
+            0% { filter: drop-shadow(0 0 10px #ff4500); }
+            100% { filter: drop-shadow(0 0 20px #ff4500); }
+        }
+
+        @keyframes explode {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.5); opacity: 0; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-logo {
+                max-width: 300px;
+            }
+            .hero p {
+                font-size: 1.2rem;
+            }
+            .download-buttons {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .btn {
+                padding: 15px 40px;
+                font-size: 1.4rem;
+            }
+            .parallax h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Static Background -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <img src="https://upload.wikimedia.org/wikipedia/en/d/d1/Gob_logo_new.png" alt="Guns of Boom Logo" class="hero-logo">
+            <p>Unleash Chaos in the Ultimate FPS Showdown!</p>
+            <div class="download-buttons">
+                <a href="https://play.google.com/store/search?q=guns+of+boom&c=apps" target="_blank" class="btn btn-android"><span>Android</span></a>
+                <a href="https://apps.apple.com/us/app/guns-of-boom/id1179715015" target="_blank" class="btn btn-ios"><span>iOS</span></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax Section -->
+    <section class="parallax">
+        <div class="parallax-content">
+            <h2>Dominate the Battlefield</h2>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2>Experience the Boom</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <h3>Relentless Action</h3>
+                <p>Dive into heart-pounding battles with intuitive controls and non-stop excitement.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Next-Gen Visuals</h3>
+                <p>Feel the heat with jaw-dropping graphics and explosive effects.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Squad Warfare</h3>
+                <p>Team up, strategize, and crush your enemies together.</p>
+            </div>
+            <div class="feature-card">
+                <h3>Endless Customization</h3>
+                <p>Gear up with weapons and skins that match your style.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2025 Guns of Boom - xAI Powered Landing Page. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Parallax Effect
+        window.addEventListener('scroll', () => {
+            const parallax = document.querySelector('.parallax');
+            let scrollPosition = window.pageYOffset;
+            parallax.style.backgroundPositionY = `${scrollPosition * 0.5}px`;
+        });
+
+        // Button Explosion Animation
+        const buttons = document.querySelectorAll('.btn');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const explosion = document.createElement('div');
+                explosion.style.position = 'absolute';
+                explosion.style.width = '30px';
+                explosion.style.height = '30px';
+                explosion.style.background = '#ff4500';
+                explosion.style.borderRadius = '50%';
+                explosion.style.left = `${e.offsetX}px`;
+                explosion.style.top = `${e.offsetY}px`;
+                explosion.style.zIndex = '10';
+                btn.appendChild(explosion);
+                explosion.style.animation = 'explode 0.5s forwards';
+                setTimeout(() => explosion.remove(), 500);
+            });
+        });
+
+        // Smooth Scroll for Features
+        const featureCards = document.querySelectorAll('.feature-card');
+        window.addEventListener('scroll', () => {
+            featureCards.forEach(card => {
+                const rect = card.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 150) {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        featureCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            card.style.transform = 'translateY(50px)';
+        });
+    </script>
+</body>
+</html>
